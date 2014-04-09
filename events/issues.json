@@ -1,0 +1,44 @@
+{
+  "created_at": "2014-01-01T00:02:01-08:00",
+  "payload": {
+    "action": "opened",
+    "issue": 24938482,
+    "number": 6
+  },
+  "public": true,
+  "type": "IssuesEvent",
+  "url": "https://github.com/terkel/terkel.jp-stylesheets/issues/6",
+  "actor": "terkel",
+  "actor_attributes": {
+    "login": "terkel",
+    "type": "User",
+    "gravatar_id": "dc3f88b2c2c4210e3068d94ce7c25bf2",
+    "name": "Takeru Suzuki",
+    "company": "Shiftbrain Inc.",
+    "blog": "http://terkel.jp/",
+    "location": "Japan",
+    "email": "terkeljp@gmail.com"
+  },
+  "repository": {
+    "id": 4113385,
+    "name": "terkel.jp-stylesheets",
+    "url": "https://github.com/terkel/terkel.jp-stylesheets",
+    "description": "Stylesheets for terkel.jp",
+    "homepage": "",
+    "watchers": 10,
+    "stargazers": 10,
+    "forks": 2,
+    "fork": false,
+    "size": 302,
+    "owner": "terkel",
+    "private": false,
+    "open_issues": 5,
+    "has_issues": true,
+    "has_downloads": true,
+    "has_wiki": true,
+    "language": "CSS",
+    "created_at": "2012-04-23T06:31:27-07:00",
+    "pushed_at": "2013-12-31T23:54:20-08:00",
+    "master_branch": "master"
+  }
+}

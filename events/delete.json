@@ -1,0 +1,44 @@
+{
+  "created_at": "2014-01-01T00:02:01-08:00",
+  "payload": {
+    "ref": "2-14-spec-stub-chain-args",
+    "ref_type": "branch"
+  },
+  "public": true,
+  "type": "DeleteEvent",
+  "url": "https://github.com/",
+  "actor": "myronmarston",
+  "actor_attributes": {
+    "login": "myronmarston",
+    "type": "User",
+    "gravatar_id": "42d4590355a1404230fbc9aff4dd377b",
+    "name": "Myron Marston",
+    "company": "Moz",
+    "blog": "myronmars.to/n",
+    "location": "Seattle, WA",
+    "email": "myron.marston@gmail.com"
+  },
+  "repository": {
+    "id": 238983,
+    "name": "rspec-mocks",
+    "url": "https://github.com/rspec/rspec-mocks",
+    "description": "RSpec's 'test double' framework, with support for stubbing and mocking",
+    "homepage": "http://relishapp.com/rspec/rspec-mocks",
+    "watchers": 333,
+    "stargazers": 333,
+    "forks": 134,
+    "fork": false,
+    "size": 8630,
+    "owner": "rspec",
+    "private": false,
+    "open_issues": 20,
+    "has_issues": true,
+    "has_downloads": false,
+    "has_wiki": true,
+    "language": "Ruby",
+    "created_at": "2009-06-29T08:56:06-07:00",
+    "pushed_at": "2014-01-01T00:02:01-08:00",
+    "master_branch": "master",
+    "organization": "rspec"
+  }
+}
