@@ -7,7 +7,7 @@ import matplotlib.pyplot as plt
 import parse_data as pd
 
 
-def simple_draw(label,y):
+def simple_draw(label, y):
     plt.figure(figsize=(8, 4))
     plt.plot(y, label=label)
     plt.legend()
@@ -27,6 +27,10 @@ def draw_date(files):
 
 if __name__ == '__main__':
     results = pd.get_month_total()
-    # results = [6570, 7420, 11274, 12073, 12160, 12378, 12897, 8474, 7984, 12933, 13504, 13763, 13544, 12940, 7119, 7346, 13412, 14008, 12555]
-    simple_draw("month",results)
-    print results
+
+    plt.figure(figsize=(8, 4))
+    plt.plot(results.__getslice__(0, 7), label="first week")
+    plt.plot(results.__getslice__(7, 14), label="second week")
+    plt.plot(results.__getslice__(14, 21), label="third week")
+    plt.legend()
+    plt.show()
