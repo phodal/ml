@@ -25,8 +25,9 @@ def draw_date(files):
     simple_draw(files, mwcs)
 
 
-if __name__ == '__main__':
+def draw_month():
     results = pd.get_month_total()
+    print results
 
     plt.figure(figsize=(8, 4))
     plt.plot(results.__getslice__(0, 7), label="first week")
@@ -34,3 +35,7 @@ if __name__ == '__main__':
     plt.plot(results.__getslice__(14, 21), label="third week")
     plt.legend()
     plt.show()
+
+
+if __name__ == '__main__':
+    draw_month()

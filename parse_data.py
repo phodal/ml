@@ -3,10 +3,11 @@ __all__ = ["get_minutes_counts_with_id"]
 
 import json
 import dateutil.parser
+import pdb
 
 
 def get_minutes_counts_with_id(jsonfile):
-    datacount,dataarray = handle_json(jsonfile)
+    datacount, dataarray = handle_json(jsonfile)
     minuteswithcount = [(x, dataarray.count(x)) for x in set(dataarray)]
     return minuteswithcount
 
@@ -32,6 +33,7 @@ def get_minutes_count_num(jsonfile):
     return datacount
 
 
+pdb.set_trace()
 def get_month_total():
     """
 
