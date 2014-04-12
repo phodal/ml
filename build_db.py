@@ -11,7 +11,7 @@ import re
 def init_db():
     conn = sqlite3.connect('userdata.db')
     c = conn.cursor()
-    c.execute('''CREATE TABLE userinfo (owener text, language text, eventtype text, name text, url text)''')
+    c.execute('''CREATE TABLE userinfo (owner text, language text, eventtype text, name text, url text)''')
     c.close()
 
 
@@ -68,7 +68,7 @@ def handle_gzip_file(filename):
             key = actor.lower()
 
             repo = event.get("repository", {})
-            info = str(repo.get("owner")), str(event["type"]), str(repo.get("name")), str(repo.get("language")), str(
+            info = str(repo.get("owner")), str(repo.get("language")), str(event["type"]), str(repo.get("name")), str(
                 repo.get("url"))
             userinfo.append(info)
 
@@ -82,16 +82,17 @@ def build_db_with_gzip():
 
     year = 2014
     month = 3
-    day = 2
-    date_re = re.compile(r"([0-9]{4})-([0-9]{2})-([0-9]{2})-([0-9]+)\.json.gz")
 
-    fn_template = os.path.join("march",
-                               "{year}-{month:02d}-{day:02d}-{n}.json.gz")
-    kwargs = {"year": year, "month": month, "day": day, "n": "*"}
-    filenames = glob.glob(fn_template.format(**kwargs))
+    for day in range(1,31):
+        date_re = re.compile(r"([0-9]{4})-([0-9]{2})-([0-9]{2})-([0-9]+)\.json.gz")
 
-    for filename in filenames:
-        c.executemany('INSERT INTO userinfo VALUES (?,?,?,?,?)', handle_gzip_file(filename))
+        fn_template = os.path.join("march",
+                                   "{year}-{month:02d}-{day:02d}-{n}.json.gz")
+        kwargs = {"year": year, "month": month, "day": day, "n": "*"}
+        filenames = glob.glob(fn_template.format(**kwargs))
+
+        for filename in filenames:
+            c.executemany('INSERT INTO userinfo VALUES (?,?,?,?,?)', handle_gzip_file(filename))
 
     conn.commit()
     c.close()
