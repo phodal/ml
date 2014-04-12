@@ -4,7 +4,7 @@
 import numpy as np
 import matplotlib.mlab as mlab
 import matplotlib.pyplot as plt
-import parse_data as pd
+import build_db as bd
 
 
 def simple_draw(label, y):
@@ -38,4 +38,4 @@ def draw_month():
 
 
 if __name__ == '__main__':
-    pd.build_all_db()
+    bd.build_db_with_gzip()
