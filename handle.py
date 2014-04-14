@@ -6,6 +6,7 @@ import matplotlib.mlab as mlab
 import matplotlib.pyplot as plt
 import build_db as bd
 import build_db_index as dbindex
+import ml as ml
 
 def simple_draw(label, y):
     plt.figure(figsize=(8, 4))
@@ -38,5 +39,5 @@ def draw_month():
 
 
 if __name__ == '__main__':
-    gmszone = bd.get_vector("gmszone")
+    gmszone = ml.get_neighbors("gmszone")
     print gmszone

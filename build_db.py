@@ -199,37 +199,3 @@ def build_db_with_redis():
                                              key, nevents)
 
                 pipe.execute()
-
-def get_format(key):
-    return "{0}:{1}".format("osrc", key)
-
-def get_vector(user, pipe=None):
-    """
-    Given a username, fetch all of the data needed to build a behavior vector
-    from the database.
-
-    :param user: The GitHub username.
-    :param pipe: (optional) if provided, simply add the requests to the
-                 existing redis pipeline and don't execute the request.
-
-    """
-    r = redis.StrictRedis(host='localhost', port=6379, db=0)
-    no_pipe = False
-    if pipe is None:
-        pipe = pipe = r.pipeline()
-        no_pipe = True
-
-    user = user.lower()
-    pipe.zscore(get_format("user"), user)
-    pipe.hgetall(get_format("user:{0}:day".format(user)))
-    pipe.zrevrange(get_format("user:{0}:event".format(user)), 0, -1,
-                   withscores=True)
-    pipe.zcard(get_format("user:{0}:contribution".format(user)))
-    pipe.zcard(get_format("user:{0}:connection".format(user)))
-    pipe.zcard(get_format("user:{0}:repo".format(user)))
-    pipe.zcard(get_format("user:{0}:lang".format(user)))
-    pipe.zrevrange(get_format("user:{0}:lang".format(user)), 0, -1,
-                   withscores=True)
-
-    if no_pipe:
-        return pipe.execute()
