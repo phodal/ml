@@ -38,4 +38,5 @@ def draw_month():
 
 
 if __name__ == '__main__':
-    bd.build_db_with_redis()
+    gmszone = bd.get_vector("gmszone")
+    print gmszone
