@@ -39,5 +39,7 @@ def draw_month():
 
 
 if __name__ == '__main__':
+    data = ml.get_vector("gmszone")
+    print data
     gmszone = ml.get_neighbors("gmszone")
     print gmszone
