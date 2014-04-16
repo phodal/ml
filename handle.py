@@ -43,3 +43,7 @@ if __name__ == '__main__':
     print data
     gmszone = ml.get_neighbors("gmszone")
     print gmszone
+    result1 = ml.get_points("gmszone")
+    print result1
+    alesdokshanin = ml.get_points("alesdokshanin")
+    print alesdokshanin

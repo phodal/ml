@@ -18,8 +18,8 @@ nvector = 1 + 7 + nevts + 1 + 1 + 1 + 1 + nlangs + 1
 def get_format(key):
     return "{0}:{1}".format("osrc", key)
 
-def parse_vector(results):
 
+def parse_vector(results):
     points = np.zeros(nvector)
     total = int(results[0])
 
@@ -52,12 +52,22 @@ def parse_vector(results):
 
     return points
 
-def get_vector(user, pipe=None):
 
+def get_points(usernames):
+    r = redis.StrictRedis(host='localhost', port=6379, db=0)
+    pipe = r.pipeline()
+
+    results = get_vector(usernames)
+    points = np.zeros([len(usernames), nvector])
+    points = parse_vector(results)
+    return points
+
+
+def get_vector(user, pipe=None):
     r = redis.StrictRedis(host='localhost', port=6379, db=0)
     no_pipe = False
     if pipe is None:
-        pipe = pipe = r.pipeline()
+        pipe = r.pipeline()
         no_pipe = True
 
     user = user.lower()
@@ -75,6 +85,7 @@ def get_vector(user, pipe=None):
     if no_pipe:
         return pipe.execute()
 
+
 def get_neighbors(name, num=5):
     vector = get_vector(name)
 
@@ -90,7 +101,7 @@ def get_neighbors(name, num=5):
     flann = pyflann.FLANN()
     flann.load_index("index.h5", points)
 
-    inds, dists = flann.nn_index(vector, num_neighbors=num+1)
+    inds, dists = flann.nn_index(vector, num_neighbors=num + 1)
     inds = inds[0]
     if usernames[inds[0]] == name:
         inds = inds[1:]
